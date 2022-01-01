@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[4]:
+# In[9]:
 
 
 from flask import Flask
@@ -12,8 +12,18 @@ app = Flask(__name__)
 def index():
     return "Congratulations, it's a web app!"
 
+@app.route("/")
+def fahrenheit_from("/celsius"):
+    """Convert Celsius to Fahrenheit degrees."""
+    try:
+        fahrenheit = float(celsius) * 9 / 5 + 32
+        fahrenheit = round(fahrenheit, 3)  # Round to three decimal places
+        return str(fahrenheit)
+    except ValueError:
+        return "invalid input"
 
-# In[3]:
+
+# In[10]:
 
 
 if __name__ == "__main__":

@@ -12,7 +12,7 @@ app = Flask(__name__)
 def index():
     return "Congratulations, it's a web app!"
 
-@app.route("/<celsius>")
+@app.route("/42<celsius>")
 def fahrenheit_from(celsius):
     """Convert Celsius to Fahrenheit degrees."""
     try:

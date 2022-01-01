@@ -4,15 +4,15 @@
 # In[11]:
 
 
-from flask import Flask
+from flask import *
 from sleeper_wrapper import League, User
 import pandas as pd
 from pandas.io.json import json_normalize
 
 app = Flask(__name__)
 
-@app.route("/")
-def index():
+@app.route("/tables")
+def show_tables():
     # call in League ID
     League = League(650030921247977472)
     
@@ -76,7 +76,7 @@ def index():
     # display in sorted fashion
     display = long_term_pool_standings.sort_values('count', ascending=False)
     
-    return display
+    return render_template('view.html', tables=[display.to_html], titles=['Long-Term Pool Standings'])
 
 #@app.route("/<celsius>")
 #def fahrenheit_from(celsius):
